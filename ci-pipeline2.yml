@@ -14,7 +14,7 @@ pool:
   name: Default
 
 variables:
-- template: ../common/ci-vars-template.yml
+- template: /common/ci-vars-template.yml
   parameters:
       projectName: parrot
   # define 3 more variables: registryName, registryLogin and registryPassword in the build pipeline in UI
