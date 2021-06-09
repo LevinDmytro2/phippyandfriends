@@ -1,0 +1,100 @@
+trigger:
+  batch: true
+  branches:
+    include: 
+    - '*'
+  paths:
+    include: 
+    - parrot/
+    - common/ci-steps-template.yml
+    
+pr: none
+
+pool:
+  name: Default
+
+variables:
+- template: ../common/ci-vars-template.yml
+  parameters:
+      projectName: parrot
+  # define 3 more variables: registryName, registryLogin and registryPassword in the build pipeline in UI
+
+steps:
+- bash: |
+    cd $(projectName)
+    docker build \
+        -t $(registryServerName)/$(imageName):$(imageTag) \
+        .
+  failOnStderr: true
+  displayName: 'docker build'
+- bash: |
+    echo '$(registryPassword)' | docker login \
+        $(registryServerName) \
+        -u $(registryLogin) \
+        --password-stdin
+  condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))
+  displayName: 'docker login'
+- bash: |
+    docker push $(registryServerName)/$(imageName):$(imageTag)
+  failOnStderr: true
+  condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))
+  displayName: 'docker push'
+- task: HelmInstaller@1
+  displayName: 'install helm'
+  inputs:
+    helmVersionToInstall: $(helmVersion)
+- bash: |
+    cd $(projectName)
+    helm package \
+        --version $(helmChartVersion) \
+        --app-version $(imageTag) \
+        charts/$(projectName)
+  failOnStderr: true
+  displayName: 'helm package'
+- bash: |
+    cd $(projectName)
+    chartPackage=$(ls $(projectName)-$(helmChartVersion).tgz)
+    az acr helm push \
+        -n $(registryName) \
+        -u $(registryLogin) \
+        -p '$(registryPassword)' \
+        $chartPackage
+    echo $(jq -n --arg version "$(helmChartVersion)" '{helmChartVersion: $version}') > $(build.artifactStagingDirectory)/variables.json
+  failOnStderr: false
+  name: helmPush
+  condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))
+  displayName: 'az acr helm push'
+- publish: $(build.artifactStagingDirectory)
+  artifact: build-artifact
+  condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))
+- task: HelmInstaller@1
+  displayName: 'install helm'
+  inputs:
+    helmVersionToInstall: $(helmVersion)
+- bash: |
+   az login \
+        --service-principal \
+        -u $(aksSpId) \
+        -p '$(aksSpSecret)' \
+        --tenant $(aksSpTenantId)
+    az aks get-credentials \
+        -n $(aks) \
+        -g $(rg)
+    helm repo add \
+        $(registryName) \
+        https://$(registryServerName)/helm/v1/repo \
+        --username $(registryLogin) \
+        --password '$(registryPassword)'
+    helmChartVersion=$(jq .helmChartVersion $(build.artifactStagingDirectory)/variables.json -r)
+    helm upgrade \
+        --namespace $(k8sNamespace) \
+        --create-namespace \
+        --install \
+        --wait \
+        --version $helmChartVersion \
+        --set image.repository=$(registryServerName)/$(projectName) \
+        --set ingress.enabled=false \
+        $(projectName) \
+        $(registryName)/$(projectName)
+  failOnStderr: true
+  displayName: 'deploy helm chart'
