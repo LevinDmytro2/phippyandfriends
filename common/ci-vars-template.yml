@@ -3,6 +3,7 @@ parameters:
 
 variables:
   helmVersion: 3.2.3
+  k8sNamespace: 'phippyandfriends'
   registryServerName: '$(registryName).azurecr.io'
   projectName: ${{ parameters.projectName }}
   imageName: ${{ parameters.projectName }}
