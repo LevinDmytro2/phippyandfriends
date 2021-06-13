@@ -85,6 +85,7 @@ steps:
         https://$(registryServerName)/helm/v1/repo \
         --username $(registryLogin) \
         --password '$(registryPassword)'
+    helm repo update
     helmChartVersion=$(jq .helmChartVersion $(build.artifactStagingDirectory)/variables.json -r)
     helm upgrade \
         --namespace $(k8sNamespace) \
