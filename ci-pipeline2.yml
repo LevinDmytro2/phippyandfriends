@@ -24,6 +24,7 @@ steps:
     cd $(projectName)
     docker build \
         -t $(registryServerName)/$(imageName):$(imageTag) \
+        --no-cache \
         .
   failOnStderr: true
   displayName: 'docker build'
