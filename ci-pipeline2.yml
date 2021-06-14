@@ -17,6 +17,14 @@ parameters:
     values:
     - world
     - mondo
+  - name: myString22
+    displayName: string22
+    type: string
+    default: 'world22'
+    values:
+    - world22
+    - mondo22
+
 
 pool:
   name: Default
