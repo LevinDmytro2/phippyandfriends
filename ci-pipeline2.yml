@@ -10,20 +10,46 @@ trigger:
     
 pr: none
 parameters:
-  - name: myString
-    displayName: string
+  - name: myParameter
+    displayName: greetings
     type: string
     default: 'world'
     values:
     - world
     - mondo
-  - name: myString22
-    displayName: string22
-    type: string
-    default: 'world22'
+  - name: myNumber
+    displayName: 'Number'
+    type: number
+    default: '1'
     values:
-    - world22
-    - mondo22
+    - 1
+    - 2
+    - 3
+  - name: myBoolean
+    type: boolean
+    default: true
+  - name: myObject
+    type: object
+    default:
+      foo: FOO
+      bar: BAR
+      things:
+      - one
+      - two
+      - three
+      nested:
+        one: apple
+        two: pear
+        count: 3
+  - name: myStep
+    type: step
+    default:
+      script: echo my step
+  - name: mySteplist
+    type: stepList
+    default:
+      - script: echo step one
+      - script: echo step two
 
 
 pool:
