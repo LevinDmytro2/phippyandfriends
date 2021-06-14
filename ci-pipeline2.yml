@@ -9,6 +9,14 @@ trigger:
     - common/ci-steps-template.yml
     
 pr: none
+parameters:
+  - name: myString
+    displayName: string
+    type: string
+    default: 'world'
+    values:
+    - world
+    - mondo
 
 pool:
   name: Default
