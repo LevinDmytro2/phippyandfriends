@@ -18,6 +18,13 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 - task: TerraformInstaller@0
+- task: TerraformCLI@0
+  inputs:
+    command: 'plan'
+    workingDirectory: 
+    environmentServiceName: 'Trial(851f27db-441a-4eab-9a57-1b622fbe2d4f)'
+    runAzLogin: true
+    allowTelemetryCollection: true
   inputs:
     terraformVersion: 'latest'
 - task: TerraformCLI@0
@@ -27,6 +34,7 @@ steps:
 - task: TerraformCLI@0
   inputs:
     command: 'plan'
-    environmentServiceName: 'Trial(1)(851f27db-441a-4eab-9a57-1b622fbe2d4f)'
+    workingDirectory: 
+    environmentServiceName: 'Trial(851f27db-441a-4eab-9a57-1b622fbe2d4f)'
     runAzLogin: true
     allowTelemetryCollection: false
