@@ -26,7 +26,7 @@ steps:
     ensureBackend: true
     backendAzureRmResourceGroupName: 'terraform'
     backendAzureRmResourceGroupLocation: 'West Europe'
-    backendAzureRmStorageAccountName: 'remotestateslevin_1623965139390'
+    backendAzureRmStorageAccountName: 'levin_1623965629334'
     backendAzureRmContainerName: 'states'
     backendAzureRmKey: 'test-env'
     allowTelemetryCollection: false
