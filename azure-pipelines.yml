@@ -26,11 +26,11 @@ steps:
 - task: TerraformCLI@0
   inputs:
     command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
     environmentServiceName: 'Trial(851f27db-441a-4eab-9a57-1b622fbe2d4f)'
     runAzLogin: true
+    commandOptions: '-out=$(System.DefaultWorkingDirectory)/terraform.tfplan -detailed-exitcode'
     allowTelemetryCollection: true
-    publishPlanResults: 'TESTPLAN'
+    publishPlanResults: 'testingplan'
 - task: TerraformCLI@0
   inputs:
     command: 'apply'
