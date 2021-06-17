@@ -28,7 +28,7 @@ terraform {
   }
 }
 
-│ terraform {
-│   backend "local" {}
-│ }
+terraform {
+   backend "local" {}
+}
 
