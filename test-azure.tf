@@ -27,3 +27,8 @@ terraform {
     
   }
 }
+
+│ terraform {
+│   backend "local" {}
+│ }
+
