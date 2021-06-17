@@ -21,7 +21,14 @@ steps:
 - task: TerraformCLI@0
   inputs:
     command: 'init'
-    workingDirectory: 
+    backendType: 'azurerm'
+    backendServiceArm: 'Trial(1)(851f27db-441a-4eab-9a57-1b622fbe2d4f)'
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'terraform'
+    backendAzureRmResourceGroupLocation: 'West Europe'
+    backendAzureRmStorageAccountName: 'remotestateslevin_1623965139390'
+    backendAzureRmContainerName: 'states'
+    backendAzureRmKey: 'test-env'
     allowTelemetryCollection: false
 - task: TerraformCLI@0
   inputs:
