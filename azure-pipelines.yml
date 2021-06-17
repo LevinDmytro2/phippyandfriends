@@ -26,6 +26,7 @@ steps:
 - task: TerraformCLI@0
   inputs:
     command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)plans'
     environmentServiceName: 'Trial(851f27db-441a-4eab-9a57-1b622fbe2d4f)'
     runAzLogin: true
     allowTelemetryCollection: true
