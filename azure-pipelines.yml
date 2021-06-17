@@ -30,3 +30,4 @@ steps:
     runAzLogin: true
     allowTelemetryCollection: true
     publishPlanResults: 'TESTPLAN'
+    ommandOptions: '-out=$(System.DefaultWorkingDirectory)/terraform.tfplan'
