@@ -24,3 +24,8 @@ steps:
   inputs:
     command: 'init'
     allowTelemetryCollection: true
+- task: TerraformCLI@0
+  inputs:
+    command: 'plan'
+    allowTelemetryCollection: false
+    publishPlanResults: 'testplan'
