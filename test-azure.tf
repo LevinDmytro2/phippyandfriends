@@ -5,7 +5,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "k8srg" {
-  name     = "k8srg-test-terraform"
+  name     = var.test_var
   location = "West Europe"
 
 }
@@ -30,5 +30,9 @@ terraform {
 
 terraform {
    backend "azurerm" {}
+}
+
+variable "test_var" {
+  default = "vars11"
 }
 
