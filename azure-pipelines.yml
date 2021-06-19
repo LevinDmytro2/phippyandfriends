@@ -69,6 +69,5 @@ steps:
     runAzLogin: true
     commandOptions: '-var test_var=${{ parameters.myString }}'
     allowTelemetryCollection: false
-- script: 
 - ${{ if eq(parameters.destroy, true) }}:
     - script: echo "Running all the tests"
