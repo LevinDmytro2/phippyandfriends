@@ -6,12 +6,28 @@
 trigger:
 - master
 
+parameters:
+  - name: myString
+    displayName: string
+    type: string
+    default: 'world'
+    values:
+    - world
+    - mondo
+  - name: myString22
+    displayName: string22
+    type: string
+    default: 'world22'
+    values:
+    - world22
+    - mondo22
+
 pool:
   name: Default
 
 steps:
 - script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  displayName: 'Run a one-line script ${{ parameters.myString }}'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
