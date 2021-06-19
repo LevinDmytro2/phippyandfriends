@@ -38,8 +38,9 @@ parameters:
     - ubuntu-16.04
     - macOS-latest
     - macOS-10.14
-  - name: gdfgd
-    solution: my.sln
+  - name: 'solution'
+    default: ''
+    type: string
 
 
 variables:
