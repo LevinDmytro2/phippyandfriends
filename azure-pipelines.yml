@@ -26,8 +26,8 @@ pool:
   name: Default
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script ${{ parameters.myString }}'
+- script: echo Hello, ${{ parameters.myString }}
+  displayName: 'Run a one-line script'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
