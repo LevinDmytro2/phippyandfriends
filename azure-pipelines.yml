@@ -21,6 +21,9 @@ parameters:
     values:
     - world22
     - mondo22
+variables:
+- name: TF_VAR_test_var
+  value: fgdfgdfgfdgdftttt
 
 pool:
   name: Default
