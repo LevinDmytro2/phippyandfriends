@@ -25,6 +25,9 @@ parameters:
     displayName: Destroy Environment?
     type: boolean
     default: false
+  - name: 'pool'
+    type: object
+    default: {}
 
 variables:
 - name: TF_VAR_test_var
