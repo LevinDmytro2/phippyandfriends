@@ -25,8 +25,8 @@ parameters:
     displayName: Destroy Environment?
     type: boolean
     default: false
-  - name: 'pool'
-    type: object
+  - name: pool
+    type: string
     default: {}
 
 variables:
