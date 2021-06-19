@@ -39,7 +39,7 @@ parameters:
     - macOS-latest
     - macOS-10.14
   - name: 'solution'
-    default: ''
+    default: ' '
     type: string
 
 
