@@ -76,3 +76,4 @@ steps:
         environmentServiceName: 'Trial(1)(851f27db-441a-4eab-9a57-1b622fbe2d4f)'
         runAzLogin: true
         allowTelemetryCollection: false
+        commandOptions: '-var test_var=${{ parameters.myString }}'
