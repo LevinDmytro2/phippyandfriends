@@ -33,6 +33,6 @@ terraform {
 }
 
 variable "test_var" {
-  default = "testtfgroup123"
+  default = ""
 }
 
