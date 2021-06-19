@@ -4,7 +4,7 @@ provider "azurerm" {
 
 }
 
-resource "azurerm_resource_group" "k8srg" {
+resource "azurerm_resource_group" "k8srg2222" {
   name     = var.test_var
   location = "West Europe"
 
