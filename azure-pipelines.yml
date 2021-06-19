@@ -29,7 +29,7 @@ pool:
   name: Default
 
 steps:
-- script: echo Hello, ${{ parameters.myString }}
+- script: echo Hello $(TF_VAR_test_var), ${{ parameters.myString }}
   displayName: 'Run a one-line script'
 
 - script: |
