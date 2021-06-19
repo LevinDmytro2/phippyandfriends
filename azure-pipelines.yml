@@ -21,6 +21,11 @@ parameters:
     values:
     - world22
     - mondo22
+  - name: destroy
+    displayName: Destroy Environment?
+    type: boolean
+    default: false
+
 variables:
 - name: TF_VAR_test_var
   value: ${{ parameters.myString }}
@@ -64,3 +69,8 @@ steps:
     runAzLogin: true
     commandOptions: '-var test_var=${{ parameters.myString }}'
     allowTelemetryCollection: false
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+- ${{ if eq(parameters.destroy, true) }}:
+    - script: echo "Running all the tests"
