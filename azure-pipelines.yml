@@ -70,4 +70,9 @@ steps:
     commandOptions: '-var test_var=${{ parameters.myString }}'
     allowTelemetryCollection: false
 - ${{ if eq(parameters.destroy, true) }}:
-    - script: echo "Running all the tests"
+    - task: TerraformCLI@0
+      inputs:
+        command: 'destroy'
+        environmentServiceName: 'Trial(1)(851f27db-441a-4eab-9a57-1b622fbe2d4f)'
+        runAzLogin: true
+        allowTelemetryCollection: false
