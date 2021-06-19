@@ -62,5 +62,5 @@ steps:
     command: 'apply'
     environmentServiceName: 'Trial(1)(851f27db-441a-4eab-9a57-1b622fbe2d4f)'
     runAzLogin: true
-    commandOptions: '-var=test_var=${{ parameters.myString }}'
+    commandOptions: '-var="test_var=gggghhhttt"'
     allowTelemetryCollection: false
