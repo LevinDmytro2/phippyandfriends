@@ -27,7 +27,6 @@ parameters:
     default: false
   - name: pool
     type: string
-    default: test
 
 variables:
 - name: TF_VAR_test_var
