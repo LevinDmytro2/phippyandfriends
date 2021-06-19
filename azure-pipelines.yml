@@ -10,7 +10,7 @@ parameters:
   - name: myString
     displayName: string
     type: string
-    default: 'worldааааеее'
+    default: worldааааеее
     values:
     - worldааааеее
     - mondodddd
