@@ -69,8 +69,6 @@ steps:
     runAzLogin: true
     commandOptions: '-var test_var=${{ parameters.myString }}'
     allowTelemetryCollection: false
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
+- script: 
 - ${{ if eq(parameters.destroy, true) }}:
     - script: echo "Running all the tests"
