@@ -38,6 +38,10 @@ parameters:
     - ubuntu-16.04
     - macOS-latest
     - macOS-10.14
+  - name: 'solution'
+    default: '**/*.sln'
+    type: string
+
 
 variables:
 - name: TF_VAR_test_var
