@@ -23,7 +23,7 @@ parameters:
     - mondo22
 variables:
 - name: TF_VAR_test_var
-  value: fgdfgdfgfdgdftttt
+  value: ${{ parameters.myString }}
 
 pool:
   name: Default
