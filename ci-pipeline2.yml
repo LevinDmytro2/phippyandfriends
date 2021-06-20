@@ -38,6 +38,7 @@ variables:
 steps:
 - bash: |
     cd $(projectName)
+    echo ${{ parameters.myString }}
     docker build \
         -t $(registryServerName)/$(imageName):$(imageTag) \
         --no-cache \
